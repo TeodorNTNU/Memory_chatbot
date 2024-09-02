@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:14  # PostgreSQL image version
+    environment:
+      POSTGRES_DB: mydatabase  # Database name
+      POSTGRES_USER: myuser  # Database user
+      POSTGRES_PASSWORD: mypassword  # Database password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Mount volume for PostgreSQL data persistence
+    ports:
+      - "5432:5432"  # Expose PostgreSQL port to host
+
+  web:
+    build:
+      context: .  # Current directory contains the Dockerfile for Django
+    command: python manage.py runserver 0.0.0.0:8000  # Command to run Django development server
+    volumes:
+      - .:/chat_authenticator  # Mount current directory to /app in the container
+    ports:
+      - "8000:8000"  # Expose Django port to host
+    depends_on:
+      - postgres  # Ensure PostgreSQL starts before Django
+
+volumes:
+  postgres_data:
