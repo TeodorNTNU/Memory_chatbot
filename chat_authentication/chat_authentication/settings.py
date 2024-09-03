@@ -171,3 +171,48 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+# settings.py
+
+import os
+
+
+import logging.config
+
+# Construct an absolute path for the log file using BASE_DIR
+LOG_FILE_PATH = os.path.join(BASE_DIR, 'error.log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '{levelname} {asctime} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',  # Only log errors
+            'class': 'logging.FileHandler',
+            'filename': LOG_FILE_PATH,  # Use absolute path
+            'formatter': 'simple',
+        },
+        'console': {
+            'level': 'ERROR',  # Only log errors
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'ERROR',  # Only log errors
+            'propagate': True,
+        },
+        'chat': {  # Replace with your Django app name
+            'handlers': ['file', 'console'],
+            'level': 'ERROR',  # Only log errors
+            'propagate': False,
+        },
+    },
+}

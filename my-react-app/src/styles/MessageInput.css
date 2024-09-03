@@ -1,0 +1,41 @@
+/* MessageInput.css */
+.message-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  bottom: 0;
+}
+
+.input-textarea {
+  flex-grow: 1;
+  resize: none;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.send-button {
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-button:disabled {
+  background-color: #a3c9ff;
+  cursor: not-allowed;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #0077e6;
+}

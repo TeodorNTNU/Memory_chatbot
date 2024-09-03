@@ -1,0 +1,29 @@
+/* App.css or NewConversationButton.css */
+
+.sidebar {
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    align-items: stretch;   /* Make children take the full width */
+  }
+  
+  .new-chat-button-container {
+    padding: 10px; /* Add some spacing around the button */
+    text-align: center; /* Center the button horizontally */
+  }
+  
+  .start-new-chat-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-bottom: 10px; /* Add some space between the button and the list */
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .conversation-list-container {
+    flex: 1; /* Allow the conversation list to take remaining space */
+    overflow-y: auto; /* Make the conversation list scrollable if needed */
+  }
+  

@@ -1,0 +1,39 @@
+.conversation-list {
+    position: relative; /* Allows the button to be positioned within this container */
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .start-new-conversation-btn {
+    background-color: transparent;
+    color: #888;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    z-index: 10; /* Ensure button is above other content */
+  }
+  
+  .start-new-conversation-btn:hover {
+    color: #000;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+  }
+  
+  .conversation-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .conversation-item:hover {
+    background-color: #f1f1f1;
+  }
+  

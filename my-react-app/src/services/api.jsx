@@ -1,3 +1,4 @@
+// services/api.js
 import axios from 'axios';
 
 // Set the base URL for the Django backend API
@@ -18,37 +19,20 @@ export const getConversations = async () => {
   }
 };
 
-// Function to create a new conversation
-export const createConversation = async (initialMessage) => {
-  try {
-    const response = await axios.post(
-      `${API_BASE_URL}/create-conversation/`,
-      { initial_message: initialMessage },
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`,
-        },
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.error('Error creating conversation:', error);
-    throw error;
-  }
-};
 
-// Function to handle sending a message
+
 export const sendMessage = async (conversationId, inputMessage) => {
   try {
     const response = await axios.post(
       `${API_BASE_URL}/handle-message/`,
       {
-        input_message: inputMessage,
         conversation_id: conversationId,
+        input_message: inputMessage,
       },
       {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
         },
       }
     );
@@ -56,5 +40,26 @@ export const sendMessage = async (conversationId, inputMessage) => {
   } catch (error) {
     console.error('Error sending message:', error);
     throw error;
+  }
+};
+
+
+export const getChatHistory = async (conversationId) => {
+  try {
+      const response = await axios.get(`${API_BASE_URL}/chat-history/${conversationId}/`, {
+          headers: {
+              Authorization: `Token ${localStorage.getItem('token')}`,
+          },
+      });
+      
+      // Check if the fetched data contains 'messages' and if it's an array
+      if (response.data && Array.isArray(response.data.messages)) {
+          return response.data.messages;
+      } else {
+          throw new Error('Fetched data is not an array');
+      }
+  } catch (error) {
+      console.error('Error fetching chat history:', error);
+      throw error;
   }
 };

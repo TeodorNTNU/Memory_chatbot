@@ -1,0 +1,79 @@
+/* Prevent overflow on the body element */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrollbars from appearing */
+  height: 100vh; /* Make the body take full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent overflow on the root element */
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent scrollbars from appearing */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  height: 100vh; /* Make it take full height of the viewport */
+  overflow: 'hidden';
+}
+
+.main-container {
+  display: flex;
+  position: relative; /* To position the button relative to this container */
+  width: 100%;
+  max-width: 1200px; /* Limit the width of the container */
+  height: 100%; /* Make it take the full height of the app */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
+.conversation-list {
+  width: 200px; /* Set width for conversation list */
+  border-right: 1px solid #ddd; /* Add a border between conversation list and chat window */
+  overflow-y: auto; /* Make conversation list scrollable */
+  padding: 10px;
+  position: relative; /* Position relative for internal elements */
+}
+
+.chat-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Full height for chat window and input area */
+}
+
+.chat-window {
+  flex-grow: 1;
+  overflow-y: auto; /* Makes the message list scrollable */
+  padding: 10px;
+}
+
+
+.messages-container {
+  flex-grow: 1;
+  overflow-y: auto; /* Allows scrolling */
+}
+
+.message-input {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
