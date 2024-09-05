@@ -116,7 +116,6 @@ def handle_message(request):
 
 
 
-
 class ChatHistoryAPIView(APIView):
     def get(self, request, conversation_id):
         try:
